@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews</title>
+    <link rel="icon" href="images/fav.png" type="image/png">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"> 
+</head>
+
+<body>
+    <div class="container">
+        <div id="welcome">
+            <h1> Welcome </h1>
+            <p>Welcome to the collections of excellent human creations. 
+            </p>
+        </div>
+
+        <div class="drops">
+            <a href="music.html" class="drop drop-1" tabindex="0">
+                <h2>Music</h2>
+            </a>            
+            <div class="drop drop-2">
+            </div>
+            <a href="books.html" class="drop drop-3" tabindex="0">
+                <h2>Books</h2>
+            </a>
+            <a href="films.html" class="drop drop-4" tabindex="0">
+                <h2>Films</h2>
+            </a>
+            <div class="drop drop-5"></div>
+        </div>
+    </div>
+    <script src="js/on_load.js"></script>
+</body>
+
+</html>
