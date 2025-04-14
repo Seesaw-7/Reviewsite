@@ -1,0 +1,73 @@
+truculenta-a {
+    font-family: "Truculenta", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+  }
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+#items {
+    position: relative;
+    margin: auto auto;
+}
+
+.box {
+    visibility: hidden;
+    padding: 15px;
+    width: 180px;
+    word-wrap: break-word;
+}
+
+.box-img p {
+    font-size: smaller;
+    font-family: "Truculenta", sans-serif;
+}
+
+.box-img {
+    width: 180px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px #ccc;
+    border-radius: 5px;
+}
+
+.box-img img {
+    width: 100%;
+    height: auto;
+}
+
+button {
+    display: block;
+    width: max-content;
+    padding: 5px 10px 5px 10px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: auto auto;
+    font-family: "Truculenta", sans-serif;
+}
+
+button:hover {
+    background-color: transparent;
+}
+
+a {
+    color: white;
+    text-align: center;
+
+}
+  

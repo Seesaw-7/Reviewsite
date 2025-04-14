@@ -1,0 +1,293 @@
+body {
+    background: linear-gradient(-45deg, black, #131d4e),
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0) 70%);
+    /* background-blend-mode: screen; */
+    height: 100vh;
+    /* font-family: "Lucida Console", "Courier New", monospace; */
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+
+#welcome {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 3em;
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+    box-shadow: 5px 5px 8px rgba(255, 255, 255, 0.3),
+        10px 10px 20px rgba(255, 255, 255, 0.1);
+    text-align: center;
+    position: relative;
+    display: grid;
+    /* margin: auto auto; */
+    justify-self: center;
+    margin: 0;
+    transition: all 2s ease-in-out;
+    background: radial-gradient(closest-side,
+            rgba(255, 255, 255, 0.2),
+            /* less transparent at the center */
+            rgba(255, 255, 255, 0.1),
+            /* more transparent before the edge */
+            rgba(255, 255, 255, 0));
+    /* fully transparent at the edge */
+}
+
+
+#welcome:hover {
+    margin: 0;
+}
+
+#welcome p {
+    display: none;
+}
+
+.drop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.3);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    box-shadow: 10px 10px 60px -8px rgba(0, 0, 0, 0.2);
+    box-shadow: 5px 5px 8px rgba(255, 255, 255, 0.3),
+        10px 10px 20px rgba(255, 255, 255, 0.1);
+    position: absolute;
+    transition: all 0.2s ease;
+
+}
+
+.drop h2 {
+    font-size: x-large;
+    justify-self: center;
+    text-align: center;
+    align-self: center;
+    color: #fff;
+    text-decoration: none;
+}
+
+a.drop,
+a.droph2 {
+    text-decoration: none;
+}
+
+.drop-1 {
+    height: 90px;
+    width: 90px;
+    top: -35px;
+    left: -4px;
+    z-index: -1;
+}
+
+.drop-2 {
+    height: 50px;
+    width: 50px;
+    bottom: -120px;
+    left: 90px;
+}
+
+.drop-3 {
+    height: 80px;
+    width: 80px;
+    bottom: -30px;
+    right: 5px;
+    z-index: -1;
+}
+
+.drop-4 {
+    height: 100px;
+    width: 100px;
+    top: -95px;
+    right: -30px;
+}
+
+.drop-5 {
+    height: 30px;
+    width: 30px;
+    bottom: 30px;
+    left: 9px;
+    z-index: -1;
+}
+
+a,
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+body {
+    display: grid;
+    color: white;
+    margin: 10%;
+}
+
+h1 {
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+
+#back-home {
+    color: grey;
+}
+
+.drop #welcome {
+    position: absolute;
+    transition: all 0.2s ease;
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    background: radial-gradient(closest-side, rgba(255, 255, 255, 0.1), transparent),
+        rgba(255, 255, 255, 0.3);
+    /* subtle gradient for 3D effect */
+}
+
+.drop::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 50%;
+    height: 50%;
+    background: radial-gradient(circle closest-side, rgba(255, 255, 255, 0.6), transparent);
+    border-radius: 50%;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.drop {
+    background: radial-gradient(closest-side,
+            rgba(255, 255, 255, 0.2),
+            /* less transparent at the center */
+            rgba(255, 255, 255, 0.1),
+            /* more transparent before the edge */
+            rgba(255, 255, 255, 0));
+    /* fully transparent at the edge */
+}
+
+/* reflection/highlight effect */
+.drop::before {
+    background: radial-gradient(circle closest-side,
+            rgba(255, 255, 255, 0.6),
+            /* brighter at the center */
+            rgba(255, 255, 255, 0));
+    /* fades out to transparent */
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+@media (min-width: 900px) {
+    #welcome {
+        height: 400px;
+        width: 400px;
+    }
+
+    #welcome p {
+        display: block;
+        font-weight: 500;
+        color: #fff;
+        opacity: 0.7;
+        font-size: xx-large;
+        margin-top: 0;
+        margin-bottom: 60px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        box-shadow: 5px 5px 8px rgba(255, 255, 255, 0.3),
+            10px 10px 20px rgba(255, 255, 255, 0.1);
+        box-shadow: none;
+        background: radial-gradient(closest-side,
+                rgba(255, 255, 255, 0.2),
+                /* less transparent at the center */
+                rgba(255, 255, 255, 0.1),
+                /* more transparent before the edge */
+                rgba(255, 255, 255, 0));
+        /* fully transparent at the edge */
+    }
+
+    .drop-1 {
+        height: 140px;
+        width: 140px;
+        top: 100px;
+        left: -40px;
+        z-index: -1;
+    }
+
+    .drop-1:hover,
+    .drop-1:focus {
+        height: 150px;
+        width: 150px;
+        top: 95px;
+        left: -45px;
+        z-index: -1;
+    }
+
+
+    .drop-2 {
+        height: 80px;
+        width: 80px;
+        bottom: -30px;
+        right: -10px;
+    }
+
+    .drop-3 {
+        height: 180px;
+        width: 180px;
+        bottom: 120px;
+        right: -50px;
+        z-index: -1;
+    }
+
+    .drop-3:hover,
+    .drop-3:focus {
+        height: 190px;
+        width: 190px;
+        bottom: 115px;
+        right: -55px;
+        z-index: -1;
+    }
+
+    .drop-4 {
+        height: 240px;
+        width: 240px;
+        top: -55px;
+        right: -55px;
+    }
+
+    .drop-4:hover,
+    .drop-4:focus {
+        height: 250px;
+        width: 250px;
+        top: -60px;
+        right: -60px;
+    }
+
+    .drop-5 {
+        height: 100px;
+        width: 100px;
+        bottom: 170px;
+        left: 90px;
+        z-index: -1;
+    }
+}
+
+body {
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+
+h1, h2, h3, p, a, button {
+    font-family: 'Lucida Console', 'Courier New', monospace;
+}
+  
