@@ -71,3 +71,19 @@ a {
 
 }
   
+.custom-upload {
+    background-color: white;
+    color: black;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-block;
+    border: 1px solid #ccc;
+  }
+  
+  #fileName {
+    margin-left: 10px;
+    color: white;
+  }
+  

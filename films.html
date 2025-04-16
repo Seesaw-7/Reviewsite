@@ -27,10 +27,14 @@
 
   <form id="movieForm">
     <input type="text" id="movieTitle" placeholder="Movie Title" required />
-    <input type="url" id="movieImage" placeholder="Image URL" required />
-    
+    <input type="file" id="movieImage" accept="image/*" required />
+    <!-- <label for="movieImage" class="custom-upload">Upload Image</label>
+    <input type="file" id="movieImage" accept="image/*" required hidden />
+    <span id="fileName">No file chosen</span> -->
+    <textarea id="movieDesc" placeholder="Write a short description..." required></textarea>
     <button type="submit">Add Movie</button>
   </form>
+  
 
   <a href="index.html" tabindex="0">
     Back
