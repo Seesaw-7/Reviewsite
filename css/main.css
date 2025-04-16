@@ -1,7 +1,6 @@
 body {
     background: linear-gradient(-45deg, black, #131d4e),
         radial-gradient(circle at top left, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0) 70%);
-    /* background-blend-mode: screen; */
     height: 100vh;
     font-family: "Lucida Console", "Courier New", monospace;
     width: 90%;
@@ -33,7 +32,6 @@ body {
     text-align: center;
     position: relative;
     display: grid;
-    /* margin: auto auto; */
     justify-self: center;
     margin: 0;
     transition: all 2s ease-in-out;
