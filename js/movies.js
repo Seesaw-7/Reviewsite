@@ -44,10 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.onclick = () => loadMore(title.replace(/\s+/g, '-'));
 
     const deleteBtn = document.createElement('button');
+    deleteBtn.className = 'delete-btn'; 
     deleteBtn.textContent = 'X';
     deleteBtn.style.position = 'absolute';
-    deleteBtn.style.top = '5px';
-    deleteBtn.style.right = '5px';
+    deleteBtn.style.top = '18px';
+    deleteBtn.style.right = '6px';
     deleteBtn.onclick = () => deleteMovie(title);
 
     boxImg.appendChild(h2);
