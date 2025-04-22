@@ -53,13 +53,16 @@ document.addEventListener('DOMContentLoaded', () => {
   
 
   const renderAll = () => {
-    // Do NOT clear existing HTML:
-    // Just append user-added cards
-    movies.forEach(movie => {
+    // console.log(predefinedMovies);
+    // console.log(movies);
+    const allMovies = [...predefinedMovies, ...movies];
+  
+    allMovies.forEach(movie => {
       const card = createCard({
         title: movie.title,
         imageData: movie.imageData || movie.imageUrl || '',
-        description: movie.description || 'No description available.'
+        description: movie.description || 'No description available.',
+        moreDescription: movie.moreDescription || ''
       });
       itemsContainer.appendChild(card);
     });
@@ -101,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
       titleInput.value = '';
       fileInput.value = '';
       descInput.value = '';
-      moreDescInput.value = '';
+      
     };
 
     reader.readAsDataURL(file); // This is the key fix: convert file into image data
