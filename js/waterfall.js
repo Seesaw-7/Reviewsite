@@ -14,7 +14,7 @@ function imgLocation(parent, content) {
     var style = window.getComputedStyle(firstBox);
     var marginLeft = parseInt(style.marginLeft, 10);
     var marginRight = parseInt(style.marginRight, 10);
-    var imgWidth = firstBox.offsetWidth + marginLeft + marginRight; // Now includes margins
+    var imgWidth = firstBox.offsetWidth + marginLeft + marginRight;
 
     var num = Math.floor(document.documentElement.clientWidth / imgWidth);
     console.log("num: " + num)
