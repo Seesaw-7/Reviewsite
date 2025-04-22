@@ -1,3 +1,10 @@
+// I tried getBoundingClientRect(), but the layout wasn't shown as expected.
+/**
+ * Arranges `.box` elements in a responsive waterfall layout inside a container.
+ *
+ * @param {string} parentId - ID of the parent container (e.g., "items").
+ * @param {string} boxClass - Class name of the box elements to arrange.
+ */
 const imgLocation = (parentId, boxClass) => {
     const container = document.querySelector(`#${parentId}`);
     const allBoxes = Array.from(document.querySelectorAll(`.${boxClass}`));
@@ -35,6 +42,11 @@ const imgLocation = (parentId, boxClass) => {
     });
   };
   
+  /**
+   * Reveals the "more description" content for a movie and triggers a layout reflow.
+   *
+   * @param {string} movieId - The unique identifier (usually slugged title) of the movie.
+   */
   const loadMore = movieId => {
     const moreText = document.querySelector(`#more-${movieId}`);
     if (!moreText) return;
@@ -57,6 +69,12 @@ const imgLocation = (parentId, boxClass) => {
     updateColumn(columnIndex, parentBox.offsetWidth);
   };
   
+  /**
+   * Recomputes and adjusts the vertical stacking of boxes in a specific column.
+   *
+   * @param {number} columnIndex - The index of the column to update.
+   * @param {number} columnWidth - The width of each column in pixels.
+   */
   const updateColumn = (columnIndex, columnWidth) => {
     const allBoxes = Array.from(document.querySelectorAll('.box'));
     const columnStartX = columnIndex * columnWidth;
@@ -73,6 +91,9 @@ const imgLocation = (parentId, boxClass) => {
     });
   };
   
+  /**
+   * Enables keyboard support for triggering button clicks using Enter or Space.
+   */
   const enableKeyboardClickSupport = () => {
     document.querySelectorAll('button').forEach(button => {
       button.addEventListener('keypress', e => {

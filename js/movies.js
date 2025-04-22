@@ -1,16 +1,36 @@
+/** @constant {HTMLFormElement} */
 const form = document.querySelector('#movieForm');
+/** @constant {HTMLInputElement} */
 const titleInput = document.querySelector('#movieTitle');
+/** @constant {HTMLInputElement} */
 const fileInput = document.querySelector('#movieImage');
+/** @constant {HTMLInputElement} */
 const descInput = document.querySelector('#movieDesc');
+/** @constant {HTMLInputElement} */
 const moreDescInput = document.querySelector('#movieMoreDesc');
+/** @constant {HTMLElement} */
 const itemsContainer = document.querySelector('#items');
 
+/** @constant {string} */
 const STORAGE_KEY = 'user-added-movies';
+/** @constant {string} */
 const DELETED_KEY = 'deleted-movies';
 
+/** @type {Array<Object>} */
 let movies = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+/** @type {Array<string>} */
 const deletedTitles = JSON.parse(localStorage.getItem(DELETED_KEY)) || [];
 
+/**
+ * Creates a movie card DOM element.
+ * 
+ * @param {Object} movie - Movie data
+ * @param {string} movie.title
+ * @param {string} movie.imageData - base64 or URL
+ * @param {string} movie.description
+ * @param {string} movie.moreDescription
+ * @returns {HTMLElement} A DOM element representing the movie card
+ */
 const createCard = ({ title, imageData, description, moreDescription }) => {
   const box = document.createElement('div');
   box.className = 'box';
@@ -62,6 +82,9 @@ const createCard = ({ title, imageData, description, moreDescription }) => {
   return box;
 };
 
+/**
+ * Renders all movie cards to the DOM.
+ */
 const renderAll = () => {
   itemsContainer.innerHTML = '';
 
@@ -84,6 +107,9 @@ const renderAll = () => {
   }
 };
 
+/**
+ * Handles form submission to add a new movie.
+ */
 form.addEventListener('submit', e => {
   e.preventDefault();
 
@@ -122,6 +148,11 @@ form.addEventListener('submit', e => {
   reader.readAsDataURL(file);
 });
 
+/**
+ * Deletes a movie by title and updates the layout accordingly.
+ * 
+ * @param {string} title - The title of the movie to delete
+ */
 const deleteMovie = title => {
   const box = [...document.querySelectorAll('.box')]
     .find(b => b.querySelector('h2')?.textContent === title);

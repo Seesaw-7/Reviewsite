@@ -1,3 +1,15 @@
+/**
+ * Predefined list of classic and international films for display.
+ * Each movie includes a title, an image URL, a short description,
+ * and optionally an extended description.
+ *
+ * @type {Array<{
+*   title: string,
+*   imageUrl: string,
+*   description: string,
+*   moreDescription?: string
+* }>}
+*/
 const predefinedMovies = [
   {
     title: "A City of Sadness",
