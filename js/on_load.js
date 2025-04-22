@@ -1,13 +1,16 @@
-window.onload = adjustMargin;
-window.onresize = adjustMargin; 
+const adjustMargin = () => {
+    const element = document.querySelector('#welcome');
 
-function adjustMargin() {
-    var element = document.getElementById("welcome");
-    if (window.innerWidth > 900) { 
-        element.style.margin = "100px";
-    } else if (window.innerWidth > 480) { // Tablets
-        element.style.margin = "50px";
-    } else { // Mobile phones
-        element.style.margin = "20px";
+    if (!element) return;
+
+    if (window.innerWidth > 900) {
+        element.style.margin = '100px';
+    } else if (window.innerWidth > 480) {
+        element.style.margin = '50px';
+    } else {
+        element.style.margin = '20px';
     }
-}
+};
+
+window.addEventListener('load', () => adjustMargin());
+window.addEventListener('resize', () => adjustMargin());
