@@ -75,6 +75,7 @@ const createCard = ({ title, imageData, description, moreDescription }) => {
   deleteBtn.style.right = '6px';
   deleteBtn.addEventListener('click', () => deleteMovie(title));
 
+  // put everything together
   boxImg.appendChild(heading);
   boxImg.appendChild(img);
   boxImg.appendChild(p);
@@ -111,6 +112,11 @@ const renderAll = async () => {
   const imgWidth = sampleBox.offsetWidth + marginLeft + marginRight;
   sampleBox.remove();
 
+  // calculate the number of columns based on the window width
+  // and the width of each box
+  // set the width of the container to be the number of columns * box width
+  // and set the visibility to be visible
+  // so that the layout won't flash serverly while rendering
   const numColumns = Math.floor(document.documentElement.clientWidth / imgWidth);
   const columnHeights = new Array(numColumns).fill(0);
   const containerWidth = imgWidth * numColumns;
@@ -118,6 +124,7 @@ const renderAll = async () => {
   itemsContainer.style.position = 'relative';
   itemsContainer.style.visibility = 'visible';
 
+  // render each movie card
   for (const movie of allMovies) {
     const card = createCard({
       title: movie.title,
@@ -170,6 +177,7 @@ const waitForImageLoad = (img) =>
 form.addEventListener('submit', e => {
   e.preventDefault();
 
+  // get the values from the form
   const title = titleInput.value.trim();
   const file = fileInput.files[0];
   const description = descInput.value.trim();
@@ -182,7 +190,7 @@ form.addEventListener('submit', e => {
 
   const reader = new FileReader();
 
-  // make sure the image is good
+  // append image to items and localStorage
   reader.onload = event => {
     const imageData = event.target.result;
     const newMovie = { title, imageData, description, moreDescription };
@@ -220,11 +228,13 @@ const deleteMovie = title => {
 
   if (!box) return;
 
+  // know which column to update
   const columnWidth = box.offsetWidth;
   const columnIndex = Math.floor(box.offsetLeft / columnWidth);
 
   box.remove();
 
+  // remove the movie from localStorage
   const index = movies.findIndex(m => m.title === title);
   if (index !== -1) {
     movies.splice(index, 1);
