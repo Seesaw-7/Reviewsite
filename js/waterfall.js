@@ -1,6 +1,8 @@
 // I tried getBoundingClientRect(), but the layout wasn't shown as expected.
 /**
  * Arranges `.box` elements in a responsive waterfall layout inside a container.
+ * This requires all images to be loaded before calling.
+ * This works well if the total number of items cards is small, or if images are pre-loaded.
  *
  * @param {string} parentId - ID of the parent container (e.g., "items").
  * @param {string} boxClass - Class name of the box elements to arrange.
@@ -104,10 +106,11 @@ const enableKeyboardClickSupport = () => {
     });
 };
 
-// Run after DOM is parsed — defer in HTML handles timing
-imgLocation('items', 'box');
+// Desired: Run after DOM is parsed — defer in HTML handles timing
+// imgLocation('items', 'box');
 enableKeyboardClickSupport();
 
+// Before resizeing, the images are loaded, so imgLocation() is used to quickly render.
 window.addEventListener('resize', () => {
     imgLocation('items', 'box');
 });

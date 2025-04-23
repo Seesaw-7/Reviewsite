@@ -231,4 +231,6 @@ const deleteMovie = title => {
   updateColumn(columnIndex, columnWidth);
 };
 
+// For the first time pages are loaded, images are not preloaded, so we use
+// renderAll to render items one by one.
 renderAll();
