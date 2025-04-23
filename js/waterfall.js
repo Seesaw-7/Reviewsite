@@ -26,6 +26,7 @@ const imgLocation = (parentId, boxClass) => {
 
     const columnHeights = new Array(numColumns).fill(0);
 
+    // synchronously set the position of each box
     allBoxes.forEach((box, i) => {
         box.style.visibility = 'visible';
         box.style.position = 'absolute';
@@ -53,6 +54,7 @@ const loadMore = movieId => {
     const moreText = document.querySelector(`#more-${movieId}`);
     if (!moreText) return;
 
+    // find the parent column
     const parentBox = moreText.closest('.box');
     if (!parentBox) {
         console.error('Parent box not found.');
@@ -63,6 +65,7 @@ const loadMore = movieId => {
 
     moreText.style.display = 'inline';
 
+    // remove the "load more" button
     const button = document.querySelector(`#more-btn-${movieId}`);
     if (button) {
         button.remove();
@@ -73,6 +76,7 @@ const loadMore = movieId => {
 
 /**
  * Recomputes and adjusts the vertical stacking of boxes in a specific column.
+ * Used by load more and delete.
  *
  * @param {number} columnIndex - The index of the column to update.
  * @param {number} columnWidth - The width of each column in pixels.

@@ -23,6 +23,8 @@ const deletedTitles = JSON.parse(localStorage.getItem(DELETED_KEY)) || [];
 
 /**
  * Creates a movie card DOM element.
+ * It gets the title, image (upload from local), description, and more description (to be 'load more').
+ * 
  * 
  * @param {Object} movie - Movie data
  * @param {string} movie.title
@@ -58,14 +60,16 @@ const createCard = ({ title, imageData, description, moreDescription }) => {
   moreP.textContent = moreDescription || '';
   moreDiv.appendChild(moreP);
 
+  // load more button
   const loadMoreBtn = document.createElement('button');
   loadMoreBtn.textContent = 'Load More';
   loadMoreBtn.id = `more-btn-${title.replace(/\s+/g, '-')}`;
   loadMoreBtn.addEventListener('click', () => loadMore(title.replace(/\s+/g, '-')));
 
+  // delete button
   const deleteBtn = document.createElement('button');
   deleteBtn.className = 'delete-btn';
-  deleteBtn.textContent = 'X';
+  deleteBtn.innerHTML = '&times;';
   deleteBtn.style.position = 'absolute';
   deleteBtn.style.top = '18px';
   deleteBtn.style.right = '6px';
@@ -92,10 +96,12 @@ const createCard = ({ title, imageData, description, moreDescription }) => {
 const renderAll = async () => {
   itemsContainer.innerHTML = '';
 
+  // remove predefined movies that are deleted
   const allMovies = [...predefinedMovies, ...movies].filter(
     movie => !deletedTitles.includes(movie.title)
   );
 
+  // get the width of a sample box, so as to calculate number of columns needed
   const sampleBox = document.createElement('div');
   sampleBox.className = 'box';
   itemsContainer.appendChild(sampleBox);
@@ -176,6 +182,7 @@ form.addEventListener('submit', e => {
 
   const reader = new FileReader();
 
+  // make sure the image is good
   reader.onload = event => {
     const imageData = event.target.result;
     const newMovie = { title, imageData, description, moreDescription };
@@ -190,6 +197,7 @@ form.addEventListener('submit', e => {
       imgLocation('items', 'box');
     }
 
+    // clear the form inputs
     titleInput.value = '';
     fileInput.value = '';
     descInput.value = '';
@@ -201,6 +209,7 @@ form.addEventListener('submit', e => {
 
 /**
  * Deletes a movie by title and updates the layout accordingly.
+ * Record the deleted movie in localStorage.
  * When deleted, only update the corresponding column to be more visually stable.
  * 
  * @param {string} title - The title of the movie to delete
