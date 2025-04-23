@@ -4,8 +4,8 @@ A website sharing reviews for books, films and music
 
 ## Overview
 
-![alt text](index.png)
-![alt text](mansory.png)
+![alt text](assets/index.pngindex.png)
+![alt text](assets/mansory.png)
 
 ## Features
 - Mansory layout of items
