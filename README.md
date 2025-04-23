@@ -4,7 +4,7 @@ A website sharing reviews for books, films and music
 
 ## Overview
 
-![alt text](assets/index.pngindex.png)
+![alt text](assets/index.png)
 ![alt text](assets/mansory.png)
 
 ## Features
