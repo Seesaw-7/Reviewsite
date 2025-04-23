@@ -84,31 +84,82 @@ const createCard = ({ title, imageData, description, moreDescription }) => {
 
 /**
  * Renders all movie cards to the DOM.
+ * The items are rendered one-by-one, so that users do not have to 
+ * wait for all images to load.
+ * Before rendering one-by-one, the number of columns are precomputed 
+ * so that the layout won't flash serverly while rendering.
  */
-const renderAll = () => {
+const renderAll = async () => {
   itemsContainer.innerHTML = '';
 
-  const allMovies = [...predefinedMovies, ...movies];
+  const allMovies = [...predefinedMovies, ...movies].filter(
+    movie => !deletedTitles.includes(movie.title)
+  );
 
-  allMovies
-    .filter(movie => !deletedTitles.includes(movie.title))
-    .forEach(movie => {
-      const card = createCard({
-        title: movie.title,
-        imageData: movie.imageData || movie.imageUrl || '',
-        description: movie.description || 'No description available.',
-        moreDescription: movie.moreDescription || ''
-      });
-      itemsContainer.appendChild(card);
+  const sampleBox = document.createElement('div');
+  sampleBox.className = 'box';
+  itemsContainer.appendChild(sampleBox);
+  const style = window.getComputedStyle(sampleBox);
+  const marginLeft = parseInt(style.marginLeft, 10);
+  const marginRight = parseInt(style.marginRight, 10);
+  const imgWidth = sampleBox.offsetWidth + marginLeft + marginRight;
+  sampleBox.remove();
+
+  const numColumns = Math.floor(document.documentElement.clientWidth / imgWidth);
+  const columnHeights = new Array(numColumns).fill(0);
+  const containerWidth = imgWidth * numColumns;
+  itemsContainer.style.width = `${containerWidth}px`;
+  itemsContainer.style.position = 'relative';
+  itemsContainer.style.visibility = 'visible';
+
+  for (const movie of allMovies) {
+    const card = createCard({
+      title: movie.title,
+      imageData: movie.imageData || movie.imageUrl || '',
+      description: movie.description || 'No description available.',
+      moreDescription: movie.moreDescription || ''
     });
 
-  if (typeof imgLocation === 'function') {
-    imgLocation('items', 'box');
+    card.style.position = 'absolute';
+    card.style.visibility = 'hidden'; // hide until positioned
+    itemsContainer.appendChild(card);
+
+    await waitForImageLoad(card.querySelector('img'));
+
+    // find shortest column
+    const minHeight = Math.min(...columnHeights);
+    const colIndex = columnHeights.indexOf(minHeight);
+
+    const top = columnHeights[colIndex];
+    const left = colIndex * imgWidth;
+
+    card.style.top = `${top}px`;
+    card.style.left = `${left}px`;
+    card.style.visibility = 'visible';
+
+    columnHeights[colIndex] += card.offsetHeight;
   }
 };
 
+
+/**
+ * Waits for an image to load (or resolves immediately if already loaded).
+ * @param {HTMLImageElement} img 
+ * @returns {Promise<void>}
+ */
+const waitForImageLoad = (img) =>
+  new Promise(resolve => {
+    if (!img) return resolve();
+    if (img.complete) return resolve();
+    img.addEventListener('load', resolve);
+    img.addEventListener('error', resolve);
+  });
+
+
 /**
  * Handles form submission to add a new movie.
+ * When a movie is added, a new card is created and rendered.
+ * We do not need to render the whole page.
  */
 form.addEventListener('submit', e => {
   e.preventDefault();
@@ -150,6 +201,7 @@ form.addEventListener('submit', e => {
 
 /**
  * Deletes a movie by title and updates the layout accordingly.
+ * When deleted, only update the corresponding column to be more visually stable.
  * 
  * @param {string} title - The title of the movie to delete
  */
