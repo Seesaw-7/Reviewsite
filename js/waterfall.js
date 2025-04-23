@@ -107,7 +107,7 @@ const enableKeyboardClickSupport = () => {
 };
 
 // Desired: Run after DOM is parsed — defer in HTML handles timing
-// imgLocation('items', 'box');
+imgLocation('items', 'box');
 enableKeyboardClickSupport();
 
 // Before resizeing, the images are loaded, so imgLocation() is used to quickly render.

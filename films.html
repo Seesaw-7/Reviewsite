@@ -10,6 +10,7 @@
     <link rel="icon" href="images/fav.png" type="image/png">
     <link rel="stylesheet" type="text/css" href="css/basic.css">
     <link rel="stylesheet" type="text/css" href="css/items.css">
+    <link rel="stylesheet" type="text/css" href="css/form.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,19 +22,39 @@
     <script src="js/waterfall.js" defer></script>
     <script src="js/movies-data.js" defer></script>
     <script src="js/movies.js" defer></script>
+    <script src="js/form.js" defer></script>
   </head>
 </head>
 
 <body>
   <h1>Film Reviews</h1>
 
-  <form id="movieForm">
-    <input type="text" id="movieTitle" placeholder="Movie Title" required />
-    <input type="file" id="movieImage" accept="image/*" required />
-    <textarea id="movieDesc" placeholder="Short description" required></textarea>
-    <textarea id="movieMoreDesc" placeholder="Extra description (Load More section)(Optional)"></textarea>
-    <button type="submit">Add Movie</button>
-  </form>
+  <button id="openFormBtn">Add Movie</button>
+
+  <div id="movieFormModal" class="modal hidden">
+    <div class="modal-content">
+      <span id="closeFormBtn" class="close">&times;</span>
+      <form id="movieForm">
+        <label>Movie Title:
+          <input type="text" id="movieTitle" required />
+        </label>
+        <br>
+        <label>Image:
+          <input type="file" id="movieImage" accept="image/*" required />
+        </label>
+        <br>
+        <label>Short description:
+          <textarea id="movieDesc" required></textarea>
+        </label>
+        <br>
+        <label>Extra description:
+          <textarea id="movieMoreDesc"></textarea>
+        </label>
+        <br>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
 
   <a href="index.html" tabindex="0">
     Back

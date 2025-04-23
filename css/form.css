@@ -1,0 +1,82 @@
+/* Modal container */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    height: 100vh;
+    width: 100vw;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Modal content box */
+.modal-content {
+    background: linear-gradient(-45deg, black, #131d4e),
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0) 70%);
+    padding: 2em;
+    border-radius: 10px;
+    width: 320px;
+    max-width: 90%;
+    position: relative;
+    box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.7);
+}
+
+/* Close button */
+.close {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Hidden utility */
+.hidden {
+    display: none !important;
+}
+
+#movieForm label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+#movieForm input,
+#movieForm textarea {
+    width: 100%;
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+#movieForm textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+#movieForm button[type="submit"] {
+    display: block;
+    margin: 1rem auto 0;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    border: 2px solid white;
+    border-radius: 8px;
+    background: transparent;
+    color: white;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+#movieForm button[type="submit"]:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
